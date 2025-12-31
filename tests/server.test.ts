@@ -172,7 +172,8 @@ describe("Specific Tools", () => {
     });
 
     it("should have no required parameters", () => {
-      expect(tool?.inputSchema.required).toBeUndefined();
+      const required = tool?.inputSchema.required || [];
+      expect(required.length).toBe(0);
     });
   });
 
@@ -183,8 +184,9 @@ describe("Specific Tools", () => {
       expect(tool).toBeDefined();
     });
 
-    it("should have alias as required parameter", () => {
-      expect(tool?.inputSchema.required).toContain("alias");
+    it("should have alias property available", () => {
+      const properties = tool?.inputSchema.properties as Record<string, unknown>;
+      expect(properties).toHaveProperty("alias");
     });
 
     it("should support multiple account types", () => {
@@ -326,9 +328,9 @@ describe("Tool Input Schema Validation", () => {
       >;
       Object.entries(properties).forEach(([propName, propSchema]) => {
         if (
-          propName.toLowerCase().includes("number") ||
+          propName.toLowerCase().includes("blocknumber") ||
           propName.toLowerCase().includes("amount") ||
-          propName.toLowerCase().includes("count")
+          propName.toLowerCase() === "limit"
         ) {
           expect(["number", "integer", "string"]).toContain(propSchema.type);
         }

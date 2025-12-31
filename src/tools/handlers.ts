@@ -62,11 +62,21 @@ export async function handleToolCall(
       const secretKey = args.secretKey as string | undefined;
       const publicDeploy = args.publicDeploy as boolean | undefined;
 
-      // This would typically call aztec-wallet CLI or use SDK
-      // For now, return instruction on how to create account
+      // Build command with all options
+      let command = `aztec-wallet create-account -t ${accountType}`;
+      if (alias) {
+        command += ` -a ${alias}`;
+      }
+      if (secretKey) {
+        command += ` --secret-key ${secretKey}`;
+      }
+      if (publicDeploy) {
+        command += " --public-deploy";
+      }
+
       return {
         instruction: "Account creation requires aztec-wallet CLI",
-        command: `aztec-wallet create-account -t ${accountType}${alias ? ` -a ${alias}` : ""}${publicDeploy ? " --public-deploy" : ""}`,
+        command,
         type: accountType,
         note: "Run this command in terminal with Aztec sandbox running",
       };
