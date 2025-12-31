@@ -1,0 +1,75 @@
+{
+  "name": "aztec-noir-mcp",
+  "version": "0.1.0",
+  "description": "Comprehensive Model Context Protocol server for Aztec Network - Privacy-first zkRollup with Noir smart contracts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "aztec-noir-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "aztec",
+    "aztec-network",
+    "noir",
+    "privacy",
+    "zk-rollup",
+    "zero-knowledge",
+    "zkp",
+    "ethereum",
+    "layer-2",
+    "smart-contracts",
+    "blockchain",
+    "web3",
+    "private-transactions",
+    "pxe",
+    "ai-agents"
+  ],
+  "author": "rudazy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rudazy/aztecmcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rudazy/aztecmcp/issues"
+  },
+  "homepage": "https://github.com/rudazy/aztecmcp#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^2.0.0",
+    "@vitest/coverage-v8": "^2.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
